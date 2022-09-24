@@ -15,7 +15,7 @@ void Person::addFriend(Person& f)
 int Person::findBestRoute(Person& f, std::vector<bool> path)
 {
 	path[id] = 1;
-	int length = 10;
+	int length = 99999999999;
 
 	if (f.getId() == this->id) {
 		return 0;
@@ -34,4 +34,30 @@ int Person::findBestRoute(Person& f, std::vector<bool> path)
 int Person::getId()
 {
 	return this->id;
+}
+
+std::vector<Person> Person::findFrends(std::vector <Person> listOfFriends, int distance)
+{
+	if (distance == 0) {
+		return listOfFriends;
+	}
+
+	for (auto a : friends) {
+		bool jest = 0;
+		for (auto b : listOfFriends) {
+			if (a->getId() == b.getId()) {
+				jest = 1;
+				break;
+			}
+		}
+		if (jest) {
+			continue;
+		}
+		else {
+			listOfFriends.push_back(*a);
+			listOfFriends = a->findFrends(listOfFriends, distance - 1);
+		}
+	}
+	
+	return listOfFriends;
 }
