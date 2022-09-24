@@ -15,7 +15,7 @@ public:
 	int findBestRoute(Person& f,std::vector <bool> path);
 	int getId();
 	std::vector <Person> findFrends(std::vector <Person> listOfFriends, int distance);
-
+	std::vector < std::vector <Person>> shortestPath(std::vector<std::vector <Person>> path, std::vector<bool> visited, Person finding);
 
 };
 

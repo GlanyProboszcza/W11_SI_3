@@ -41,4 +41,15 @@ int main()
 	for (auto a : lista) {
 		std::cout << a.getId()+1<<std::endl;
 	}
+
+	std::vector<std::vector<Person>> temp;
+	temp = shortestPath(society, osoba1, osoba5);
+	std::cout << "\nConnections to: \n";
+	for (auto b : temp) {
+		std::cout << "[ ";
+		for (auto c : b) {
+			std::cout << c.getId() << ", ";
+		}
+		std::cout << "]\n";
+	}
 }
